@@ -9,8 +9,19 @@ const YAML = require('yamljs'); // For loading Swagger YAML file
 const swaggerDocument = YAML.load('./swagger.yaml'); // Load your Swagger specification file
 const swaggerUi = require('swagger-ui-express');
 const staffRouter = require('./routers/staff.router');
+const newsRouter=require('./routers/news.router')
 app.use(bodyParser.json());
 app.use('/', userRouter);
+
+
+
+
+app.use('/news',newsRouter);
+app.use('/delete',newsRouter);
+app.use('/post',newsRouter);
+app.use('/get',newsRouter);
+app.use('/put',newsRouter);
+
 
 
 
@@ -41,4 +52,5 @@ app.use('/delete',commentRouter);
 app.use('/post',commentRouter);
 app.use('/get',commentRouter);
 app.use('/put',commentRouter);
+
 module.exports = app;
